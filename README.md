@@ -7,7 +7,7 @@
 
 La institución educativa para la que presentaste una primera propuesta de administrador de listas está muy satisfecha con el trabajo. Contarán con tus servicios de desarrolladora web para su aplicación. Para comenzar, por razones de rendimiento y mantenibilidad, quiere que su aplicación esté desarrollada con React y le pide migrar este **administrador de listas a React**. Usarán la aplicación para guardar registros de alumnos.
 
-*Este proyecto es el tercer trabajo (01/2024) del Bootcamp Full Stack Fem Coders F5 (Asociación Arrabal & Factoría F5).*
+*Este proyecto es el tercer trabajo (01/2024) del Bootcamp Full Stack FemCoders F5 (Asociación Arrabal & Factoría F5).*
 
 ## Estado del Proyecto
 
