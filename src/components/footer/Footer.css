@@ -16,17 +16,88 @@ html {
     height: 100px;
     background-color:#5584AC;
     border-radius: 40px;
-
     /* mantener el footer al final de la pagina */
     position: absolute;
     bottom: 0;
     /*centra el parrafo de texto*/
     display: inline-flex;
-    justify-content: left;
-    align-items: center;
+    justify-content: center;
+    align-items: center;    
+    gap:2%;
+    
 }
 
 .footer p{
     margin-left: 10%;
     color: white;
+    margin:0.5%;
+    font-size: 0.9em;
+}
+
+.footer img{
+    width: 90x;
+    height: 90px;
+}
+
+.textoFooter{
+    display: flex;
+    gap:5%;
+    max-width:fit-content;    
+}
+
+.copyR{
+    display:inline-flex;    
+    width: 35%;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.copyR p{
+    align-items: center;    
+}
+
+@media screen and (max-width: 430px) {
+    .footer img{
+        width: 70x;
+        height: 70px;
+        padding-left: 2%;
+    }
+    
+    .footer{
+        overflow:hidden;
+    }
+
+    .textoFooter{
+        gap:1px;
+        flex-wrap: wrap;
+    }
+
+    .footer p{
+        font-size: 0.7em;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        overflow: hidden;         
+    }
+
+    .copyR{
+        display:inline-flex;    
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+    
+}
+
+@media screen and (max-width: 688px) {
+    .footer img{
+        width: 70x;
+        height: 70px;
+        padding-left: 8%;
+    }
+
+    .textoFooter{
+        gap:0.5px;
+        flex-wrap: wrap;
+    }
 }
