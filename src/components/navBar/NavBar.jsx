@@ -11,6 +11,7 @@ function NavBar() {
       title: "¿Estás seguro?",
       text: "Si continuas saldras de la página",
       icon: "warning",
+      showCancelButton: true,
       buttons: ["Cancelar","Continuar"],
        dangerMode: true,
     })

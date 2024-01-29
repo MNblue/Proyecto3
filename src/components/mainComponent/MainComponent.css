@@ -1,0 +1,80 @@
+.form_content {
+    display: grid;
+    grid-template-columns: 0.2fr 0.7fr;
+    gap:5%;
+    width: 98%;
+    padding-top: 2%;
+    padding-left: 0.5%;
+    padding-bottom: 1%;
+    height:fit-content;
+    background-color: crimson;
+    margin: 1%;
+}
+
+#registro_datos {
+    border-radius: 50px;
+    background-color: #22577E;
+    display: grid;
+    grid-template-columns: 0.5fr 0.2fr;
+    gap: 10px;
+    padding-top: 5%;
+    padding-left: 10%;
+    padding-bottom: 5%;
+    width: 100%;
+    padding-right: 2%;
+    
+}
+
+#registro_datos label {
+    display: block;
+    margin-bottom: 5px;
+    color: white;
+    width: fit-content;
+    font-family: "Segoe UI";
+    padding-right: 1%;
+}
+
+
+.colocarBtn{
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.mostrarDatos{
+    background-color: pink;
+    width: 100%;
+}
+
+/* 
+#registro_datos input,
+#registro_datos select {
+    width: 85%;
+    box-sizing: border-box;
+  
+}
+
+
+.inputForm {
+    border-radius: 20px;
+    padding-left: 5%;
+}
+
+.btn_add {
+    display: flex;
+    margin-top: 10%;
+    margin-left: 50%;
+    padding-bottom: 5%;
+}
+.btn_add {
+    grid-column: span 2;
+}
+
+.btn_form {
+    background-color: #95D1CC;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 20px;
+
+} */
