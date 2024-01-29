@@ -14,7 +14,7 @@ function MainComponent() {
     });
 
     const [userListObject, setUserListObject] = useState([]);
-    
+
 
 
     //esta función coge el valor de "user" usando "setUser" y le asigna el valor del input, siendo el evento que dispara esta función
@@ -39,6 +39,19 @@ function MainComponent() {
         setUserObject({ ...userObject, telefono: e.target.value });
     };
 
+    //ventana modal
+    function modalBotones() {
+        swal({
+            title: "Email incorrecto",
+            text: "El e-mail introducido no tiene el formato correcto",
+            icon: "error",
+            buttons: "Continuar",
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+        });
+    }
+
     //a tráves del evento de click (onclick) del botón se ejecuta esta función, que guarda en un array la variable user mediante el
     //"setUserList"
     function handleAddUserToList() {
@@ -59,7 +72,7 @@ function MainComponent() {
                     email: "",
                     telefono: ""
                 });
-                
+
             }
         }
 
@@ -69,7 +82,7 @@ function MainComponent() {
 
     //chequeamos que todos los campos del formulario estan llenos y cambiamos la variable de estado según el caso.
     const checkFormValidity = () => {
-        const isFormValid = Object.values(userObject).every((value) => value.trim() !== '');        
+        const isFormValid = Object.values(userObject).every((value) => value.trim() !== '');
         return isFormValid;
     };
 
@@ -87,16 +100,7 @@ function MainComponent() {
         }
     }
 
-    //ventana modal
-    const modalBotones = () => {
-        swal({
-            title: "Email incorrecto",
-            text: "El e-mail introducido no tiene el formato correcto",
-            icon: "error",
-            buttons: "Continuar",
-            dangerMode: true,
-        })
-    };
+
 
     return (
         <>
@@ -119,7 +123,7 @@ function MainComponent() {
                     <input type="text" name="txtTelefono" id="txtTelefono" required maxLength="9" value={userObject.telefono} onChange={handleTelefonoChange} />
                     <br></br>
                     <span className='colocarBtn'>
-                        <button onClick={handleAddUserToList} >Añadir Alumno</button>
+                        <button type='button' onClick={handleAddUserToList} >Añadir Alumno</button>
                     </span>
                 </form>
                 <section className='mostrarDatos'>
