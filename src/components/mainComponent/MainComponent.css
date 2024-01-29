@@ -46,35 +46,74 @@
     width: 100%;
 }
 
-/* 
-#registro_datos input,
-#registro_datos select {
-    width: 85%;
-    box-sizing: border-box;
-  
+
+.seccion_datos {
+    border: solid 5px #5584AC;
+    padding: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+    width: 100%;
+    max-height: 500px;
+
 }
 
-
-.inputForm {
-    border-radius: 20px;
-    padding-left: 5%;
-}
-
-.btn_add {
-    display: flex;
-    margin-top: 10%;
-    margin-left: 50%;
-    padding-bottom: 5%;
-}
-.btn_add {
-    grid-column: span 2;
-}
-
-.btn_form {
+.tabla_datos {
+    font-size: 14px;
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
     background-color: #95D1CC;
-    border: none;
-    width: 100px;
-    height: 40px;
-    border-radius: 20px;
+    padding: 0;
 
-} */
+}
+
+
+.tablaDatos td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.tablaDatos {
+    width: 100%;
+
+}
+
+.tablaHead th {
+    background-color: #5584AC;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+    color: white;
+}
+
+
+td {
+ 
+    width: 100%;
+}
+
+tbody tr {
+    cursor: pointer;
+    background-color: #95D1CC;
+    width: 100%;
+}
+
+tbody tr:hover {
+    background: white;
+}
+
+#celdaName,
+#celdaApellido1,
+#celdaApellido2,
+#celdaRol,
+#celdaCurso,
+#celdaClase,
+#celdaEmail,
+#celdaBtnEditar,
+#celdaBtnEliminar {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+}

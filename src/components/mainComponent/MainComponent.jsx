@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import './MainComponent.css'
 import swal from 'sweetalert';
+import { UserService } from "./userService";
 
 
 function MainComponent() {
 
+
     const [userObject, setUserObject] = useState({
-        name: "",
+        id:0,
+        nombre: "",
         apellido: "",
         apellido2: "",
         email: "",
@@ -15,12 +18,26 @@ function MainComponent() {
 
     const [userListObject, setUserListObject] = useState([]);
 
+    //esta es la función que carga los datos almacenados en el json
+    async function getData(){
+        //accedo a UserService, en concreto a su métod GET. Como este método al ejecutarse retorna los datos de los usuarios,
+        //lo que almaceno en la variable users son esos datos.
+        let users = await UserService.getAllUsers();
+        //ahora actualizo el estado de userList con esta variable (usuarios)
+         setUserListObject(users);          
+    };
 
+    //LLamo a getData() Si no los datos no vienen nunca!!!!
+    getData();
+
+    async function upData(newUser){
+        let respuesta = await UserService.submitUser(newUser);
+    }
 
     //esta función coge el valor de "user" usando "setUser" y le asigna el valor del input, siendo el evento que dispara esta función
     //cualquier cambio que un usuario haga en el input al editarlo
     function handleNameChange(e) {
-        setUserObject({ ...userObject, name: e.target.value });
+        setUserObject({ ...userObject, nombre: e.target.value });
     };
 
     function handleApellidoChange(e) {
@@ -40,17 +57,19 @@ function MainComponent() {
     };
 
     //ventana modal
-    function modalBotones() {
+    function modalBotones(titulo,texto,icono,danger) {
         swal({
-            title: "Email incorrecto",
-            text: "El e-mail introducido no tiene el formato correcto",
-            icon: "error",
+            title: titulo,
+            text: texto,
+            icon: icono,
             buttons: "Continuar",
-            dangerMode: true,
+            dangerMode: danger,
             closeOnClickOutside: false,
             closeOnEsc: false,
         });
     }
+
+
 
     //a tráves del evento de click (onclick) del botón se ejecuta esta función, que guarda en un array la variable user mediante el
     //"setUserList"
@@ -61,19 +80,41 @@ function MainComponent() {
         if (checkFormValidity()) {
             //si todos los campos estan llenos antes de guardarlos verificamos el email
             if (!validarEmail()) {
-                modalBotones();
+                modalBotones("Email Incorrecto","El e-mail introducido no tiene el formato correcto","error",true); 
             } else {
-                setUserListObject(prevUserList => [...prevUserList, userObject])
+                let cont = userListObject.length +1;
+                // setUserListObject(prevUserList => [...prevUserList, userObject]);
+                let newUser = {
+                    id:0,
+                    nombre: "",
+                    apellido: "",
+                    apellido2: "",
+                    email: "",
+                    telefono: ""
+                }
+                newUser.nombre = userObject.nombre;
+                newUser.apellido = userObject.apellido;
+                newUser.apellido2 = userObject.apellido2;
+                newUser.email = userObject.email;
+                newUser.telefono = userObject.telefono;
+                newUser.id = cont;
+
+                upData(newUser);
+
+
                 //aquí volvemos a usar useState para qué para resetear el imput
                 setUserObject({
-                    name: "",
+                    id:0,
+                    nombre: "",
                     apellido: "",
                     apellido2: "",
                     email: "",
                     telefono: ""
                 });
-
+                modalBotones("Enhorabuena","Los datos del alumno se han guardado con exito.","success",false); 
             }
+        }else{
+            modalBotones("Campos vacíos","Debes completar todos los campos","error",true); 
         }
 
     }
@@ -82,7 +123,16 @@ function MainComponent() {
 
     //chequeamos que todos los campos del formulario estan llenos y cambiamos la variable de estado según el caso.
     const checkFormValidity = () => {
-        const isFormValid = Object.values(userObject).every((value) => value.trim() !== '');
+        let auxiliarUser = {
+            id : userObject.id.toString(),
+            nombre : userObject.nombre,
+            apellido : userObject.apellido,
+            apellido2 : userObject.apellido2,
+            email : userObject.email,
+            telefono : userObject.telefono
+        };
+
+        const isFormValid = Object.values(auxiliarUser).every((value) => value.trim() !== '');
         return isFormValid;
     };
 
@@ -108,7 +158,7 @@ function MainComponent() {
 
                 <form id="registro_datos">
                     <label htmlFor='txtName'>Nombre</label>
-                    <input type="text" name="txtName" id="txtName" required maxLength="12" value={userObject.name} onChange={handleNameChange} />
+                    <input type="text" name="txtName" id="txtName" required maxLength="12" value={userObject.nombre} onChange={handleNameChange} />
 
                     <label htmlFor='txtApellido1'>Apellido 1</label>
                     <input type="text" name="txtApellido1" id="txtApellido1" required maxLength="12" value={userObject.apellido} onChange={handleApellidoChange} />
@@ -127,14 +177,41 @@ function MainComponent() {
                     </span>
                 </form>
                 <section className='mostrarDatos'>
-                    Mostrar datos
+                    {/* Mostrar datos
                     <ul>
                         {
                             userListObject.map((user, index) => (
-                                <li key={index}> {user.name} {user.apellido} {user.apellido2} {user.email} {user.telefono}</li>
+                                <li key={index}> {user.nombre} {user.apellido} {user.apellido2} {user.email} {user.telefono}</li>
                             ))
                         }
-                    </ul>
+                    </ul> */}
+
+<section className="seccion_datos">
+            <table id="tablaDatos" className="tablaDatos" >
+                <thead className="tablaHead">
+                    <tr>
+                        <th name="celdaName" id="celdaName">Nombre</th>
+                        <th name="celdaApellido1" id="celdaApellido1">Apellido 1</th>
+                        <th name="celdaApellido2" id="celdaApellido2">Apellido 2</th>
+                        <th name="celdaRol" id="celdaRol">Rol</th>
+                        <th name="celdaClase" id="celdaCurso">Curso</th>
+                        <th name="celdaClase" id="celdaClase">Clase</th>
+                        <th name="celdaEmail" id="celdaEmail">Email</th>
+                        <th name="celdaBtnEliminar" id="celdaBtnEliminar">Eliminar</th>
+                        <th name="celdaBtnEditar" id="celdaBtnEditar">Editar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                       
+                    </tr>
+                </tbody> 
+
+            </table>
+            
+        </section>
+
+
                 </section>
             </section>
 
