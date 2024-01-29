@@ -1,28 +1,12 @@
 {
   "users": [
     {
-      "id": 1,
-      "nombre": "luisa",
-      "apellido": "fernandez",
-      "apellido2": "gonzalez",
-      "email": "luisita@gmail.com",
-      "telefono": "123456789"
-    },
-    {
-      "id": 2,
-      "nombre": "jjk",
-      "apellido": "fgfgfg",
-      "apellido2": "dfgsdfg",
-      "email": "asdf@gmail.com",
-      "telefono": "34535"
-    },
-    {
-      "id": 3,
-      "nombre": "clara",
-      "apellido": "garcia",
-      "apellido2": "serrano",
-      "email": "serranito@gmail.com",
-      "telefono": "787457874"
+      "id": "1",
+      "nombre": "carmen",
+      "apellido": "estela",
+      "apellido2": "rui",
+      "email": "carest@gmail.com",
+      "telefono": "234235235"
     }
   ]
 }

@@ -44,8 +44,8 @@ export const UserService = {
             // return respuesta;
 
             try {
-                // const url = `/users/${index}`;
-                const url = "http://localhost:3000/users/3"
+                const url = `/users/${index}`;
+                // const url = "http://localhost:3000/users/3"
                 console.log('URL de la solicitud de eliminación:', url);
                 
                 let respuesta = await apiClient.delete(url);
@@ -59,7 +59,14 @@ export const UserService = {
                 // Devuelve null o lanza una excepción según sea necesario
                 return null;
             }
-    }
+    },
 
+
+    async updateUser(user) {
+
+        let updatedResponse = await apiClient.put("/users", user);
+        // let updatedResponse = await apiClient.put(`/users/${userId}`, updatedUser);
+        return updatedResponse;
+    },
 
 }

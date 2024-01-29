@@ -8,7 +8,7 @@ function MainComponent() {
 
 
     const [userObject, setUserObject] = useState({
-        id: 0,
+        id: "0",
         nombre: "",
         apellido: "",
         apellido2: "",
@@ -66,14 +66,16 @@ function MainComponent() {
 
     async function deleteData(index) {
         let respuesta = await UserService.deleteUser(index);
+
     };
 
 
-    function handleEditarUser(e) {
-        //eliminar un usuario
-        //debemos saber el index o fila
-        ///luego editar en el archivo json (PUT)
-        deleteData(e.target.index);
+    function handleEditarUser(user) {
+        //debemos hacer editable la fila seleccionada
+       
+        //una vez el usuario edita la fila o no, da igual, pasamos el indice del usuario editado para hacer un put
+
+
     };
 
 
@@ -106,7 +108,7 @@ function MainComponent() {
                 let cont = userListObject.length + 1;
                 // setUserListObject(prevUserList => [...prevUserList, userObject]);
                 let newUser = {
-                    id: 0,
+                    id: "0",
                     nombre: "",
                     apellido: "",
                     apellido2: "",
@@ -118,7 +120,7 @@ function MainComponent() {
                 newUser.apellido2 = userObject.apellido2;
                 newUser.email = userObject.email;
                 newUser.telefono = userObject.telefono;
-                newUser.id = cont;
+                newUser.id = cont.toString();
 
                 upData(newUser);
 
@@ -221,7 +223,7 @@ function MainComponent() {
                                             <th>{user.email}</th>
                                             <th>{user.telefono}</th>
                                             <th><button type='button' id="deleteBtn" onClick={() => handleEliminarUser(user.id)}>Eliminar</button></th>
-                                            <th><button type='button' id="editBtn" onClick={handleEditarUser}>Editar</button></th>
+                                            <th><button type='button' id="editBtn" onClick={handleEditarUser(user)}>Editar</button></th>
                                         </tr>
                                     ))
                                 }
