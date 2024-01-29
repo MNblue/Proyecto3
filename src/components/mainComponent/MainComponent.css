@@ -7,7 +7,6 @@
     padding-left: 0.5%;
     padding-bottom: 1%;
     height:fit-content;
-    background-color: crimson;
     margin: 1%;
 }
 
@@ -21,6 +20,7 @@
     padding-left: 10%;
     padding-bottom: 5%;
     width: 100%;
+    height: max-content;
     padding-right: 2%;
     
 }
@@ -41,11 +41,32 @@
     justify-content: flex-end;
 }
 
+
+.btnForm {
+    background-color: #95D1CC;
+    border: none;
+    width: 70%;
+    height: 40px;
+    border-radius: 20px;
+    font-family: "Segoe UI";
+    color:#22577E;
+    /* font-weight: bold; */
+    font-size: medium;
+}
+
+.btnForm:hover{
+    box-shadow: 7px 5px 7px 0px rgba(144, 228, 243, 0.912);
+    color:rgba(143, 79, 5, 0.726);
+}
+
 .mostrarDatos{
     background-color: pink;
     width: 100%;
 }
 
+th{
+    font-weight: normal;
+}
 
 .seccion_datos {
     border: solid 5px #5584AC;
@@ -71,7 +92,9 @@
 .tablaDatos td {
     padding: 8px;
     text-align: left;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd;    
+    font-weight: normal;
+    font-family: "Segoe UI";
 }
 
 .tablaDatos {
@@ -85,11 +108,12 @@
     text-align: left;
     border: 1px solid #ddd;
     color: white;
+    font-family: "Segoe UI";
+    font-weight: normal; 
 }
 
 
 td {
- 
     width: 100%;
 }
 
@@ -97,23 +121,26 @@ tbody tr {
     cursor: pointer;
     background-color: #95D1CC;
     width: 100%;
+    font-family:"Segoe UI";
+    font-weight:normal;
+    
 }
 
 tbody tr:hover {
     background: white;
 }
 
-#celdaName,
-#celdaApellido1,
+#celdaNombre,
+#celdaApellido,
 #celdaApellido2,
-#celdaRol,
-#celdaCurso,
-#celdaClase,
 #celdaEmail,
+#celdaTelefono,
 #celdaBtnEditar,
 #celdaBtnEliminar {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
+
 }
+
+

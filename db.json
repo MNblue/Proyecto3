@@ -3,7 +3,7 @@
     {
       "id": 1,
       "nombre": "Aitor",
-      "apellido1": "Nadales",
+      "apellido": "Nadales",
       "apellido2": "Garcia",
       "email": "aitor123@gmail.com",
       "telefono": "677888999"
@@ -11,7 +11,7 @@
     {
       "id": 2,
       "nombre": "Miki",
-      "apellido1": "Miau",
+      "apellido": "Miau",
       "apellido2": "Michiiii",
       "email": "miki@gmail.com",
       "telefono": "699888777"
@@ -19,7 +19,7 @@
     {
       "id": 3,
       "nombre": "Estela",
-      "apellido1": "Bermudez",
+      "apellido": "Bermudez",
       "apellido2": "Sanchez",
       "email": "estelita@hotmail.com",
       "telefono": "611222333"
@@ -27,7 +27,7 @@
     {
       "id": 4,
       "nombre": "Pedro",
-      "apellido1": "Garcia",
+      "apellido": "Garcia",
       "apellido2": "Ruiz",
       "email": "pedroGarcia@gmail.com",
       "telefono": "655999666"
@@ -35,7 +35,7 @@
     {
       "id": 5,
       "nombre": "Carlos",
-      "apellido1": "Santos",
+      "apellido": "Santos",
       "apellido2": "Fernandez",
       "email": "carlitos@yahoo.com",
       "telefono": "699887744"
@@ -43,16 +43,16 @@
     {
       "id": 6,
       "nombre": "Sandra",
-      "apellido1": "Dominguez",
+      "apellido": "Dominguez",
       "apellido2": "Alcantara",
       "email": "SandriDA@gmail.com",
       "telefono": "687444111"
     },
     {
-      "id": "7",
+      "id": 7,
       "nombre": "Maria",
-      "apellido1": "Nadales",
-      "apellido2Garcia": "cucu",
+      "apellido": "Nadales",
+      "apellido2": "cucu",
       "email": "maria123@gmail.com",
       "telefono": "6776811111119"
     },
@@ -95,6 +95,14 @@
       "apellido2": "santos",
       "email": "patricia@gmail.com",
       "telefono": "111222333"
+    },
+    {
+      "id": 13,
+      "nombre": "luisa",
+      "apellido": "fernandez",
+      "apellido2": "gonzalez",
+      "email": "luisita@gmail.com",
+      "telefono": "123456789"
     }
   ]
 }
