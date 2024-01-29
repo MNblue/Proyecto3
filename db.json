@@ -1,0 +1,100 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "nombre": "Aitor",
+      "apellido1": "Nadales",
+      "apellido2": "Garcia",
+      "email": "aitor123@gmail.com",
+      "telefono": "677888999"
+    },
+    {
+      "id": 2,
+      "nombre": "Miki",
+      "apellido1": "Miau",
+      "apellido2": "Michiiii",
+      "email": "miki@gmail.com",
+      "telefono": "699888777"
+    },
+    {
+      "id": 3,
+      "nombre": "Estela",
+      "apellido1": "Bermudez",
+      "apellido2": "Sanchez",
+      "email": "estelita@hotmail.com",
+      "telefono": "611222333"
+    },
+    {
+      "id": 4,
+      "nombre": "Pedro",
+      "apellido1": "Garcia",
+      "apellido2": "Ruiz",
+      "email": "pedroGarcia@gmail.com",
+      "telefono": "655999666"
+    },
+    {
+      "id": 5,
+      "nombre": "Carlos",
+      "apellido1": "Santos",
+      "apellido2": "Fernandez",
+      "email": "carlitos@yahoo.com",
+      "telefono": "699887744"
+    },
+    {
+      "id": 6,
+      "nombre": "Sandra",
+      "apellido1": "Dominguez",
+      "apellido2": "Alcantara",
+      "email": "SandriDA@gmail.com",
+      "telefono": "687444111"
+    },
+    {
+      "id": "7",
+      "nombre": "Maria",
+      "apellido1": "Nadales",
+      "apellido2Garcia": "cucu",
+      "email": "maria123@gmail.com",
+      "telefono": "6776811111119"
+    },
+    {
+      "id": 8,
+      "nombre": "carlos",
+      "apellido": "santos",
+      "apellido2": "santi",
+      "email": "carlitos@gmail.com",
+      "telefono": "787874777"
+    },
+    {
+      "id": 9,
+      "nombre": "jjk",
+      "apellido": "fgfgfg",
+      "apellido2": "dfgsdfg",
+      "email": "cuc@gmail.com",
+      "telefono": "34535"
+    },
+    {
+      "id": 10,
+      "nombre": "jjk",
+      "apellido": "fgfgfg",
+      "apellido2": "dfgsdfg",
+      "email": "maria@gmil.com",
+      "telefono": "34535"
+    },
+    {
+      "id": 11,
+      "nombre": "jjk",
+      "apellido": "fgfgfg",
+      "apellido2": "dfgsdfg",
+      "email": "maria@gmil.com",
+      "telefono": "545646546"
+    },
+    {
+      "id": 12,
+      "nombre": "patricia",
+      "apellido": "dominguez",
+      "apellido2": "santos",
+      "email": "patricia@gmail.com",
+      "telefono": "111222333"
+    }
+  ]
+}
