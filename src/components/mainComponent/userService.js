@@ -34,10 +34,31 @@ export const UserService = {
 
     async submitUser(user) {
 
-        
         let updatedResponse = await apiClient.post("/users", user);
         return updatedResponse;
 
+    },
+
+    async deleteUser(index){
+            // let respuesta = await apiClient.delete(`/users/${index}`);
+            // return respuesta;
+
+            try {
+                // const url = `/users/${index}`;
+                const url = "http://localhost:3000/users/3"
+                console.log('URL de la solicitud de eliminación:', url);
+                
+                let respuesta = await apiClient.delete(url);
+                console.log('Usuario eliminado:', respuesta);
+        
+                // Devuelve la respuesta de la eliminación o realiza la lógica de actualización
+                return respuesta;
+            } catch (error) {
+                console.error('Error al eliminar el usuario:', error.response ? error.response.data : error.message);
+        
+                // Devuelve null o lanza una excepción según sea necesario
+                return null;
+            }
     }
 
 

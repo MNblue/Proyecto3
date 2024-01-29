@@ -32,7 +32,7 @@ function MainComponent() {
 
     async function upData(newUser) {
         let respuesta = await UserService.submitUser(newUser);
-    }
+    };
 
     //esta función coge el valor de "user" usando "setUser" y le asigna el valor del input, siendo el evento que dispara esta función
     //cualquier cambio que un usuario haga en el input al editarlo
@@ -56,6 +56,27 @@ function MainComponent() {
         setUserObject({ ...userObject, telefono: e.target.value });
     };
 
+    function handleEliminarUser(index) {
+        //eliminar un usuario
+        //debemos saber el index o fila
+        ///luego eliminarlo en el archivo json (DELETE)
+        deleteData(index);
+
+    };
+
+    async function deleteData(index) {
+        let respuesta = await UserService.deleteUser(index);
+    };
+
+
+    function handleEditarUser(e) {
+        //eliminar un usuario
+        //debemos saber el index o fila
+        ///luego editar en el archivo json (PUT)
+        deleteData(e.target.index);
+    };
+
+
     //ventana modal
     function modalBotones(titulo, texto, icono, danger) {
         swal({
@@ -67,7 +88,7 @@ function MainComponent() {
             closeOnClickOutside: false,
             closeOnEsc: false,
         });
-    }
+    };
 
 
 
@@ -193,12 +214,14 @@ function MainComponent() {
                             <tbody>                               
                                 {
                                     userListObject.map((user, index) => (
-                                        <tr>
+                                        <tr key={index}>
                                             <th>{user.nombre}</th>
                                             <th>{user.apellido}</th>
                                             <th>{user.apellido2}</th>
                                             <th>{user.email}</th>
                                             <th>{user.telefono}</th>
+                                            <th><button type='button' id="deleteBtn" onClick={() => handleEliminarUser(user.id)}>Eliminar</button></th>
+                                            <th><button type='button' id="editBtn" onClick={handleEditarUser}>Editar</button></th>
                                         </tr>
                                     ))
                                 }

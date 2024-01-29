@@ -56,12 +56,41 @@
 
 .btnForm:hover{
     box-shadow: 7px 5px 7px 0px rgba(144, 228, 243, 0.912);
-    color:rgba(143, 79, 5, 0.726);
+    color:rgb(221, 78, 26);
+}
+
+#editBtn{
+    font-family: "Segoe UI";
+    color:#ffffff;
+    background-color: #22577E;
+    border-radius: 20px;
+    border: 0;    
+    width: 100%;
+}
+
+#editBtn:hover{
+    background-color: coral;
+    cursor:pointer;
+}
+
+#deleteBtn:hover{
+    background-color: coral;
+    cursor:pointer;
+}
+
+#deleteBtn{
+    font-family: "Segoe UI";
+    color:white;
+    background-color: #16ccae;
+    border-radius: 20px;
+    border: 0;
+    width: 100%;
 }
 
 .mostrarDatos{
-    background-color: pink;
     width: 100%;
+    overflow-x: auto; /* Agrega barra de desplazamiento horizontal si es necesario */
+    overflow-y: auto; /* Agrega barra de desplazamiento vertical si es necesario */
 }
 
 th{
@@ -75,7 +104,6 @@ th{
     overflow-y: auto;
     width: 100%;
     max-height: 500px;
-
 }
 
 .tabla_datos {
@@ -85,7 +113,6 @@ th{
     width: 100%;
     background-color: #95D1CC;
     padding: 0;
-
 }
 
 
