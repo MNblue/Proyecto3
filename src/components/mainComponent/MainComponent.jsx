@@ -14,8 +14,7 @@ function MainComponent() {
     });
 
     const [userListObject, setUserListObject] = useState([]);
-    //deshabilitamos el botón inicialmente, solo se habilita cuando hemos llenado todos los campos del formulario
-    const [isAllComplete, setIsAllComplete] = useState(false);
+    
 
 
     //esta función coge el valor de "user" usando "setUser" y le asigna el valor del input, siendo el evento que dispara esta función
@@ -44,9 +43,9 @@ function MainComponent() {
     //"setUserList"
     function handleAddUserToList() {
 
-        checkFormValidity();
+        //checkFormValidity();
 
-        if (isAllComplete) {
+        if (checkFormValidity()) {
             //si todos los campos estan llenos antes de guardarlos verificamos el email
             if (!validarEmail()) {
                 modalBotones();
@@ -60,7 +59,7 @@ function MainComponent() {
                     email: "",
                     telefono: ""
                 });
-                setIsAllComplete(false);
+                
             }
         }
 
@@ -70,8 +69,8 @@ function MainComponent() {
 
     //chequeamos que todos los campos del formulario estan llenos y cambiamos la variable de estado según el caso.
     const checkFormValidity = () => {
-        const isFormValid = Object.values(userObject).every((value) => value.trim() !== '');
-        setIsAllComplete(isFormValid);
+        const isFormValid = Object.values(userObject).every((value) => value.trim() !== '');        
+        return isFormValid;
     };
 
     function validarEmail() {
