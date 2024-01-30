@@ -145,25 +145,6 @@ function MainComponent() {
         }
 
 
-
-
-        // //si la fila ya es editable es que antes la hemos hecho asi para hacer algun cambio, asumimos que hubo un cambio en la fila
-        // //guardamos los datos de ese cambio en json y volver a poner el boton NO edicion
-        // let auxUser = {
-        //     id: index.toString(),
-        //     nombre: "paco",
-        //     apellido: "paco",
-        //     apellido2: "paco",
-        //     email: "paco@gail.com",
-        //     telefono: "222222222"
-        // }
-        // //recorrer de nuevo cada celda y guardar si contenido por si ha cambiado
-        // // auxUser.id = thElements[0];
-        // //auxUser.nombre = thElements[1].textContent;
-        // //una vez el usuario edita la fila o no, da igual, pasamos el usuario supuestamente editado para hacer un put
-        // editarCell(auxUser);
-
-
     };
 
 
