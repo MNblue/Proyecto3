@@ -69,27 +69,96 @@ function MainComponent() {
 
     };
 
-    function editarCell() {
-        // setEditable("siEdit");
-    }
-     async function handleEditarUser(user, index) {
-     //debemos hacer editable la fila seleccionada, dicha fila nos la indica index
-        //le damos a la variable editable el valor de index, asi el atributo del th compara index con editable y como son iguales es true y por tanto editable la fila
+    async function editarCell(user,index) {
+        let respuesta = await UserService.updateUser(user,index);
+    };
 
+    async function handleEditarUser(user, index) {
+        //debemos hacer editable la fila seleccionada, dicha fila nos la indica index
         // // fila por su ID
         const fila = document.getElementById(index);
+        let auxUser = {
+                id: "",
+                nombre: "",
+                apellido: "",
+                apellido2: "",
+                email: "",
+                telefono: ""
+        }
 
         // // Recorre todos los elementos th de la fila obtenida
         const thElements = fila.getElementsByTagName("th");
+        let btnAux = thElements[6].getElementsByTagName('button');
 
-        for (let i = 0; i < thElements.length; i++) {
-            // Cambia la propiedad contentEditable
-            thElements[i].contentEditable = true; 
+        if (btnAux[0].innerText == "Editar") {
+            //si el botón tiene el texto editar, hacemos las celdas editables y a su cambiamos el texto del boton
+            //ya que la proxima vez que sea pulsado es porque ya se ha editado y le quito esa propiedad y guardo datos
+            for (let i = 0; i < thElements.length; i++) {
+                // Cambia la propiedad contentEditable
+                thElements[i].contentEditable = true;
+                switch (i) {
+                    case 5:
+                        thElements[i].contentEditable = false;
+                        break;
+                    case 6:
+                        //let btnAux = thElements[i].getElementsByTagName('button');
+                        //cambio el nombre al boton porque la proxima vez pulsado quiero que guarde lo hay en su fila
+                        btnAux[0].innerText = "Guardar";
+                        thElements[i].contentEditable = false;
+                        break;
+                }
+            }
+        } else {
+            auxUser.id = user.id;
+            for (let i = 0; i < thElements.length; i++) {
+                // Cambia la propiedad contentEditable
+                thElements[i].contentEditable = false;
+                switch (i) {
+                    case 0:
+                        auxUser.nombre= thElements[i].innerText;
+                        break;
+                    case 1:
+                        auxUser.apellido= thElements[i].innerText;
+                        break;
+                    case 2:
+                        auxUser.apellido2= thElements[i].innerText;
+                        break;
+                    case 3:
+                        auxUser.email= thElements[i].innerText;
+                        break;
+                    case 4:
+                        auxUser.telefono= thElements[i].innerText;
+                        break;
+                    case 6:
+                        btnAux[0].innerText = "Editar";
+                        break;
+                }
+
+            }
+        //  btnAux[0].innerText = "Editar";
+         editarCell(auxUser,index);
+
         }
 
 
-        //una vez el usuario edita la fila o no, da igual, pasamos el indice del usuario editado para hacer un put
-       // setEditable(true);
+
+
+        // //si la fila ya es editable es que antes la hemos hecho asi para hacer algun cambio, asumimos que hubo un cambio en la fila
+        // //guardamos los datos de ese cambio en json y volver a poner el boton NO edicion
+        // let auxUser = {
+        //     id: index.toString(),
+        //     nombre: "paco",
+        //     apellido: "paco",
+        //     apellido2: "paco",
+        //     email: "paco@gail.com",
+        //     telefono: "222222222"
+        // }
+        // //recorrer de nuevo cada celda y guardar si contenido por si ha cambiado
+        // // auxUser.id = thElements[0];
+        // //auxUser.nombre = thElements[1].textContent;
+        // //una vez el usuario edita la fila o no, da igual, pasamos el usuario supuestamente editado para hacer un put
+        // editarCell(auxUser);
+
 
     };
 
@@ -232,7 +301,7 @@ function MainComponent() {
                                 {
                                     userListObject.map((user, index) => (
                                         <tr key={index} id={index}>
-                                            <th contentEditable="false">{user.nombre}</th>
+                                            <th>{user.nombre}</th>
                                             <th>{user.apellido}</th>
                                             <th>{user.apellido2}</th>
                                             <th>{user.email}</th>

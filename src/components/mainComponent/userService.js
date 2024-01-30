@@ -62,10 +62,9 @@ export const UserService = {
     },
 
 
-    async updateUser(user) {
+    async updateUser(user,index) {
 
-        let updatedResponse = await apiClient.put("/users", user);
-        // let updatedResponse = await apiClient.put(`/users/${userId}`, updatedUser);
+        let updatedResponse = await apiClient.put(`/users/${user.id}`, user);
         return updatedResponse;
     },
 
