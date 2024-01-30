@@ -6,6 +6,8 @@ import { UserService } from "./userService";
 
 function MainComponent() {
 
+    const [arrayIndices, setArrayIndices] = useState([]);
+
     const [editable, setEditable] = useState(false);
 
     const [userObject, setUserObject] = useState({
@@ -66,11 +68,11 @@ function MainComponent() {
 
     async function deleteData(index) {
         let respuesta = await UserService.deleteUser(index);
-
+        borrarValor(index);
     };
 
-    async function editarCell(user,index) {
-        let respuesta = await UserService.updateUser(user,index);
+    async function editarCell(user, index) {
+        let respuesta = await UserService.updateUser(user, index);
     };
 
     async function handleEditarUser(user, index) {
@@ -78,12 +80,12 @@ function MainComponent() {
         // // fila por su ID
         const fila = document.getElementById(index);
         let auxUser = {
-                id: "",
-                nombre: "",
-                apellido: "",
-                apellido2: "",
-                email: "",
-                telefono: ""
+            id: "",
+            nombre: "",
+            apellido: "",
+            apellido2: "",
+            email: "",
+            telefono: ""
         }
 
         // // Recorre todos los elementos th de la fila obtenida
@@ -104,6 +106,8 @@ function MainComponent() {
                         //let btnAux = thElements[i].getElementsByTagName('button');
                         //cambio el nombre al boton porque la proxima vez pulsado quiero que guarde lo hay en su fila
                         btnAux[0].innerText = "Guardar";
+                        btnAux[0].style.backgroundColor = "yellow";
+                        btnAux[0].style.color = "Black";
                         thElements[i].contentEditable = false;
                         break;
                 }
@@ -115,49 +119,32 @@ function MainComponent() {
                 thElements[i].contentEditable = false;
                 switch (i) {
                     case 0:
-                        auxUser.nombre= thElements[i].innerText;
+                        auxUser.nombre = thElements[i].innerText;
                         break;
                     case 1:
-                        auxUser.apellido= thElements[i].innerText;
+                        auxUser.apellido = thElements[i].innerText;
                         break;
                     case 2:
-                        auxUser.apellido2= thElements[i].innerText;
+                        auxUser.apellido2 = thElements[i].innerText;
                         break;
                     case 3:
-                        auxUser.email= thElements[i].innerText;
+                        auxUser.email = thElements[i].innerText;
                         break;
                     case 4:
-                        auxUser.telefono= thElements[i].innerText;
+                        auxUser.telefono = thElements[i].innerText;
                         break;
                     case 6:
                         btnAux[0].innerText = "Editar";
+                        btnAux[0].style.color = "#ffffff";
+                        btnAux[0].style.backgroundColor = "#22577E";
                         break;
                 }
 
             }
-        //  btnAux[0].innerText = "Editar";
-         editarCell(auxUser,index);
+            //  btnAux[0].innerText = "Editar";
+            editarCell(auxUser, index);
 
         }
-
-
-
-
-        // //si la fila ya es editable es que antes la hemos hecho asi para hacer algun cambio, asumimos que hubo un cambio en la fila
-        // //guardamos los datos de ese cambio en json y volver a poner el boton NO edicion
-        // let auxUser = {
-        //     id: index.toString(),
-        //     nombre: "paco",
-        //     apellido: "paco",
-        //     apellido2: "paco",
-        //     email: "paco@gail.com",
-        //     telefono: "222222222"
-        // }
-        // //recorrer de nuevo cada celda y guardar si contenido por si ha cambiado
-        // // auxUser.id = thElements[0];
-        // //auxUser.nombre = thElements[1].textContent;
-        // //una vez el usuario edita la fila o no, da igual, pasamos el usuario supuestamente editado para hacer un put
-        // editarCell(auxUser);
 
 
     };
@@ -176,6 +163,35 @@ function MainComponent() {
         });
     };
 
+    function getIndex() {
+        let index = 1;
+        let longA = userListObject.length + 1;
+
+        for (let i = 0; i < arrayIndices.length; i++) {
+            if (arrayIndices[i] == index.toString()) {
+                index++;
+            } else {
+                setArrayIndices(prevArray => [...prevArray, index.toString()]);
+                ordenarArray();
+                return index.toString();
+            }
+        }
+        setArrayIndices(prevArray => [...prevArray, longA.toString()]);
+        ordenarArray();
+        return longA.toString();
+    }
+
+    const borrarValor = (valorABorrar) => {
+        // Filtra el array, excluyendo el valor que se desea borrar
+        setArrayIndices(prevArray => prevArray.filter(item => item !== valorABorrar));
+    }
+
+    // Función para ordenar el array de inidices
+    const ordenarArray = () => {
+        // Utiliza la función setArrayIndices para actualizar el estado
+        // Ordena el array utilizando la función sort
+        setArrayIndices(prevArray => [...prevArray].sort((a, b) => a - b));
+    }
 
 
     //a tráves del evento de click (onclick) del botón se ejecuta esta función, que guarda en un array la variable user mediante el
@@ -204,7 +220,8 @@ function MainComponent() {
                 newUser.apellido2 = userObject.apellido2;
                 newUser.email = userObject.email;
                 newUser.telefono = userObject.telefono;
-                newUser.id = cont.toString();
+                //  newUser.id = cont.toString();
+                newUser.id = getIndex();
 
                 upData(newUser);
 

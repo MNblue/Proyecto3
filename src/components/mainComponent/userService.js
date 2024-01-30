@@ -64,7 +64,7 @@ export const UserService = {
 
     async updateUser(user,index) {
 
-        let updatedResponse = await apiClient.put(`/users/${user.id}`, user);
+        let updatedResponse = await apiClient.patch(`/users/${user.id}`, user);
         return updatedResponse;
     },
 
