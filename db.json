@@ -1,36 +1,20 @@
 {
   "users": [
     {
-      "id": "1",
-      "nombre": "testela",
-      "apellido": "garcia",
-      "apellido2": "marin",
-      "email": "reina@test.com",
-      "telefono": "788777777"
+      "id": "2",
+      "nombre": "alex",
+      "apellido": "olivadddd",
+      "apellido2": "garcia",
+      "email": "oaido@gmail.com",
+      "telefono": "241241241"
     },
     {
-      "id": "5",
-      "nombre": "María",
-      "apellido": "sdfadf",
-      "apellido2": "NNZ",
-      "email": "mjnadales@gmail.com",
-      "telefono": "34234234"
-    },
-    {
-      "id": "3",
-      "nombre": "elenia",
-      "apellido": "elell",
-      "apellido2": "lrlrlr",
-      "email": "iisdof@gmail.com",
-      "telefono": "353252352"
-    },
-    {
-      "id": "4",
-      "nombre": "carlos",
-      "apellido": "calos",
-      "apellido2": "cucu",
-      "email": "cici@gmail.com",
-      "telefono": "234234234"
+      "id": "2",
+      "nombre": "candela",
+      "apellido": "cande",
+      "apellido2": "cande",
+      "email": "cmama@gmail.com",
+      "telefono": "123124124"
     }
   ]
 }
