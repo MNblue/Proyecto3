@@ -6,6 +6,7 @@ import { UserService } from "./userService";
 
 function MainComponent() {
 
+    const [editable, setEditable] = useState(false);
 
     const [userObject, setUserObject] = useState({
         id: "0",
@@ -25,6 +26,7 @@ function MainComponent() {
         let users = await UserService.getAllUsers();
         //ahora actualizo el estado de userList con esta variable (usuarios)
         setUserListObject(users);
+        setEditable(false);
     };
 
     //LLamo a getData() Si no los datos no vienen nunca!!!!
@@ -57,9 +59,7 @@ function MainComponent() {
     };
 
     function handleEliminarUser(index) {
-        //eliminar un usuario
-        //debemos saber el index o fila
-        ///luego eliminarlo en el archivo json (DELETE)
+        //eliminar un usuario :debemos saber el index o fila y luego eliminarlo en el archivo json (DELETE)
         deleteData(index);
 
     };
@@ -69,12 +69,27 @@ function MainComponent() {
 
     };
 
+    function editarCell() {
+        // setEditable("siEdit");
+    }
+     async function handleEditarUser(user, index) {
+     //debemos hacer editable la fila seleccionada, dicha fila nos la indica index
+        //le damos a la variable editable el valor de index, asi el atributo del th compara index con editable y como son iguales es true y por tanto editable la fila
 
-    function handleEditarUser(user) {
-        //debemos hacer editable la fila seleccionada
-       
+        // // fila por su ID
+        const fila = document.getElementById(index);
+
+        // // Recorre todos los elementos th de la fila obtenida
+        const thElements = fila.getElementsByTagName("th");
+
+        for (let i = 0; i < thElements.length; i++) {
+            // Cambia la propiedad contentEditable
+            thElements[i].contentEditable = true; 
+        }
+
+
         //una vez el usuario edita la fila o no, da igual, pasamos el indice del usuario editado para hacer un put
-
+       // setEditable(true);
 
     };
 
@@ -203,27 +218,27 @@ function MainComponent() {
                         <table id="tablaDatos" className="tablaDatos" >
                             <thead className="tablaHead">
                                 <tr>
-                                    <th name="celdaName" id="celdaNombre">Nombre</th>
+                                    <th name="celdaName" id="celdaNombre" >Nombre</th>
                                     <th name="celdaApellido1" id="celdaApellido">Apellido 1</th>
                                     <th name="celdaApellido2" id="celdaApellido2">Apellido 2</th>
                                     <th name="celdaRol" id="celdaEmail">Email</th>
                                     <th name="celdaClase" id="celdaTelefono">Teléfono</th>
-                                    
+
                                     <th name="celdaBtnEliminar" id="celdaBtnEliminar">Eliminar</th>
                                     <th name="celdaBtnEditar" id="celdaBtnEditar">Editar</th>
                                 </tr>
                             </thead>
-                            <tbody>                               
+                            <tbody>
                                 {
                                     userListObject.map((user, index) => (
-                                        <tr key={index}>
-                                            <th>{user.nombre}</th>
+                                        <tr key={index} id={index}>
+                                            <th contentEditable="false">{user.nombre}</th>
                                             <th>{user.apellido}</th>
                                             <th>{user.apellido2}</th>
                                             <th>{user.email}</th>
                                             <th>{user.telefono}</th>
                                             <th><button type='button' id="deleteBtn" onClick={() => handleEliminarUser(user.id)}>Eliminar</button></th>
-                                            <th><button type='button' id="editBtn" onClick={handleEditarUser(user)}>Editar</button></th>
+                                            <th><button type='button' id="editBtn" onClick={() => handleEditarUser(user, index)}>Editar</button></th>
                                         </tr>
                                     ))
                                 }
