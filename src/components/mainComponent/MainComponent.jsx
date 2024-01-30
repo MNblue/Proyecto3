@@ -104,6 +104,8 @@ function MainComponent() {
                         //let btnAux = thElements[i].getElementsByTagName('button');
                         //cambio el nombre al boton porque la proxima vez pulsado quiero que guarde lo hay en su fila
                         btnAux[0].innerText = "Guardar";
+                        btnAux[0].style.backgroundColor="yellow";
+                        btnAux[0].style.color = "Black";
                         thElements[i].contentEditable = false;
                         break;
                 }
@@ -131,6 +133,8 @@ function MainComponent() {
                         break;
                     case 6:
                         btnAux[0].innerText = "Editar";
+                        btnAux[0].style.color="#ffffff";
+                        btnAux[0].style.backgroundColor = "#22577E";
                         break;
                 }
 
