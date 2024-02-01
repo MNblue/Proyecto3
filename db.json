@@ -9,36 +9,12 @@
       "telefono": "111111111"
     },
     {
-      "id": "3",
-      "nombre": "triana",
-      "apellido": "aiaiao",
-      "apellido2": "tititit",
-      "email": "titit@gmail.com",
-      "telefono": "333333333"
-    },
-    {
-      "id": "4",
-      "nombre": "tomas",
-      "apellido": "tomas",
-      "apellido2": "tomi",
-      "email": "tomi@gmail.com",
-      "telefono": "4444444bbb"
-    },
-    {
-      "id": "2",
-      "nombre": "iududu",
-      "apellido": "dididi",
-      "apellido2": "didid",
-      "email": "didid@gmail.com",
-      "telefono": "423423423"
-    },
-    {
       "id": "5",
-      "nombre": "helena",
-      "apellido": "elel",
-      "apellido2": "slsl",
-      "email": "slsls@gmail.com",
-      "telefono": "342342342"
+      "nombre": "hola",
+      "apellido": "cuc",
+      "apellido2": "cucu",
+      "email": "cucu@gmail.com",
+      "telefono": "234234234"
     }
   ]
 }

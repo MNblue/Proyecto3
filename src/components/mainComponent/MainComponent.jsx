@@ -31,7 +31,7 @@ function MainComponent() {
         setEditable(false);
     };
 
-    //LLamo a getData() Si no los datos no vienen nunca!!!!
+    //LLamo a getData() para traer los datos
     getData();
 
     async function upData(newUser) {
@@ -62,7 +62,28 @@ function MainComponent() {
 
     function handleEliminarUser(index) {
         //eliminar un usuario :debemos saber el index o fila y luego eliminarlo en el archivo json (DELETE)
-        deleteData(index);
+        //antes de eleminar un usuario preguntamos si está seguro
+        swal({
+            title: "¿Estás seguro?",
+            text: "¡Esto no se puede deshacer!",
+            icon: "warning",
+            buttons: ["Cancelar", "Eliminar"],
+            dangerMode: true,
+            closeOnClickOutside: false,
+            closeOnEsc: false,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    // eliminamos el alumno
+                    deleteData(index);
+                    swal("¡Tu archivo ha sido eliminado!", {
+                        icon: "success",
+                    });
+                } else {
+                    // tu alumno no se elimina
+                    swal("No se ha borrado el alumno.");
+                }
+            });
 
     };
 
@@ -161,6 +182,10 @@ function MainComponent() {
             closeOnClickOutside: false,
             closeOnEsc: false,
         });
+    };
+
+    function modalBotones2(titulo, texto, icono, danger) {
+
     };
 
     function getIndex() {
@@ -274,26 +299,60 @@ function MainComponent() {
         }
     }
 
+    //validar que solo se puedan escribir letras en las casillas
+    function valideKey(evt) {
 
+        // code es la representación ASCII decimal de la tecla presionada.
+        var code = evt.which || evt.keyCode;
+
+        if (code === 8) {
+            // Permitir retroceso (backspace).
+            return true;
+        } else if ((code >= 65 && code <= 90) || (code >= 97 && code <= 122)) {
+            // Permitir letras (A-Z y a-z).
+            return true;
+        } else {
+            // Bloquear otras teclas.
+            evt.preventDefault();
+            return false;
+        }
+    }
+
+    const valideNumKey = (evt) => {
+        // code es la representación ASCII decimal de la tecla presionada.
+        const code = evt.which || evt.keyCode;
+    
+        if (code === 8) {
+          // Permitir retroceso (backspace).
+          return true;
+        } else if (code >= 48 && code <= 57) {
+          // Permitir números del 0 al 9.
+          return true;
+        } else {
+          // Bloquear otras teclas.
+          evt.preventDefault();
+          return false;
+        }
+      };
 
     return (
         <>
             <section className="form_content">
                 <form id="registro_datos">
                     <label htmlFor='txtName'>Nombre</label>
-                    <input type="text" name="txtName" id="txtName" required maxLength="12" value={userObject.nombre} onChange={handleNameChange} />
+                    <input type="text" name="txtName" id="txtName" required maxLength="12" value={userObject.nombre} onChange={handleNameChange} onKeyDown={(event) => valideKey(event)} />
 
                     <label htmlFor='txtApellido1'>Apellido 1</label>
-                    <input type="text" name="txtApellido1" id="txtApellido1" required maxLength="12" value={userObject.apellido} onChange={handleApellidoChange} />
+                    <input type="text" name="txtApellido1" id="txtApellido1" required maxLength="12" value={userObject.apellido} onChange={handleApellidoChange} onKeyDown={(event) => valideKey(event)} />
 
                     <label htmlFor='txtApellido2'>Apellido 2</label>
-                    <input type="text" name="txtApellido2" id="txtApellido2" required maxLength="12" value={userObject.apellido2} onChange={handleApellido2Change} />
+                    <input type="text" name="txtApellido2" id="txtApellido2" required maxLength="12" value={userObject.apellido2} onChange={handleApellido2Change} onKeyDown={(event) => valideKey(event)} />
 
                     <label htmlFor='txtEmail'>E-mail</label>
                     <input type="text" name="txtEmail" id="txtEmail" required value={userObject.email} onChange={handleEmailChange} />
 
                     <label htmlFor='txtTelefono'>Teléfono</label>
-                    <input type="text" name="txtTelefono" id="txtTelefono" required maxLength="9" value={userObject.telefono} onChange={handleTelefonoChange} />
+                    <input type="text" name="txtTelefono" id="txtTelefono" required maxLength="9" value={userObject.telefono} onChange={handleTelefonoChange} onKeyDown={(event) => valideNumKey(event)}/>
                     <br></br>
                     <span className='colocarBtn'>
                         <button type='button' className='btnForm' onClick={handleAddUserToList} >Añadir Alumno</button>
