@@ -7,11 +7,12 @@ import MainComponent from './components/mainComponent/MainComponent.jsx'
 function App() {
   const [count, setCount] = useState(0)
 
+  
   return (
     <>
-      <NavBar />
-      <MainComponent />
-      <Footer />
+          <NavBar />
+          <MainComponent />
+          <Footer />
     </>
   )
 }
